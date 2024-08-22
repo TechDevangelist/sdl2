@@ -22,12 +22,9 @@ jobs:
         export PATH=/opt/miyoo/bin/:$PATH
     - name: make cfg
       run: |
-        cd sdl2
-        make cfg
-        cat config.log
+        make cfg ; cat config.log
     - name: make
       run: |
-        cd sdl2
         make
     - name: output
       run: |
