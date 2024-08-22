@@ -22,10 +22,10 @@ jobs:
         export PATH=/opt/miyoo/bin/:$PATH
     - name: make cfg
       run: |
-        make cfg ; cat config.log
+        make -f Makefile.a30 cfg ; cat config.log
     - name: make
       run: |
-        make
+        make -f Makefile.a30 
     - name: output
       run: |
         cat config.log
