@@ -24,3 +24,6 @@ jobs:
       run: make cfg
     - name: make
       run: make
+    - name: output
+      run: |
+        cat config.log
