@@ -20,15 +20,15 @@ jobs:
         wget -q https://github.com/steward-fu/website/releases/download/miyoo-a30/a30_toolchain-v1.0.tar.gz
         tar xzf a30_toolchain-v1.0.tar.gz -C /opt/ 
         chmod +x /opt/a30/bin/*
+        ls /opt /opt/a30/* 
+    - name: make cfg
+      run: |
         export PATH=/opt/a30/bin/:$PATH
         export CROSS_COMPILE=/opt/a30/bin/arm-a30-linux-gnueabihf-
         export PREFIX=/usr
         export PKG_CONFIG_PATH=/opt/a30/lib/pkgconfig/:/usr/local/lib/pkgconfig/
         export CC="arm-a30-linux-gnueabihf-gcc"
         export CXX="arm-a30-linux-gnueabihf-g++"
-        ls /opt /opt/a30/* 
-    - name: make cfg
-      run: |
         make -f Makefile.a30 cfg ; cat config.log
     - name: make
       run: |
