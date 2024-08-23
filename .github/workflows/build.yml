@@ -22,7 +22,7 @@ jobs:
         chmod +x /opt/a30/bin/*
         ls /opt /opt/a30/* 
         stat /opt/a30/bin/arm-a30-linux-gnueabihf-*
-        /opt/a30/bin/arm-a30-linux-gnueabihf-gcc
+        /opt/a30/bin/arm-a30-linux-gnueabihf-gcc -v
     - name: make cfg
       run: |
         export PATH=/opt/a30/bin/:$PATH
