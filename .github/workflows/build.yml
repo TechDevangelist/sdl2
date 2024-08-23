@@ -20,6 +20,7 @@ jobs:
         wget -q https://github.com/steward-fu/website/releases/download/miyoo-a30/a30_toolchain-v1.0.tar.gz
         tar xzf a30_toolchain-v1.0.tar.gz -C /tmp/ ; sudo mkdir -p /opt ; sudo mv /tmp/a30 /opt/miyoo/
         export PATH=/opt/miyoo/bin/:$PATH
+        ls /opt /opt/miyoo/*
     - name: make cfg
       run: |
         make -f Makefile.a30 cfg ; cat config.log
