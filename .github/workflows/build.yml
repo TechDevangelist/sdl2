@@ -18,9 +18,9 @@ jobs:
       run: |
         sudo apt-get install build-essential make cmake wget autogen autoconf automake -y
         wget -q https://github.com/steward-fu/website/releases/download/miyoo-a30/a30_toolchain-v1.0.tar.gz
-        tar xzf a30_toolchain-v1.0.tar.gz -C /tmp/ ; sudo mkdir -p /opt ; sudo mv /tmp/a30 /opt/miyoo/
-        export PATH=/opt/miyoo/bin/:$PATH
-        ls /opt /opt/miyoo/*
+        tar xzf a30_toolchain-v1.0.tar.gz -C /opt/ 
+        export PATH=/opt/a30/bin/:$PATH
+        ls /opt /opt/a30/*
     - name: make cfg
       run: |
         make -f Makefile.a30 cfg ; cat config.log
