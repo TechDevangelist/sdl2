@@ -21,7 +21,12 @@ jobs:
         tar xzf a30_toolchain-v1.0.tar.gz -C /opt/ 
         chmod +x /opt/a30/bin/*
         export PATH=/opt/a30/bin/:$PATH
-        ls /opt /opt/a30/*
+        export CROSS_COMPILE=/opt/a30/bin/arm-a30-linux-gnueabihf-
+        export PREFIX=/usr
+        export PKG_CONFIG_PATH=/opt/a30/lib/pkgconfig/:/usr/local/lib/pkgconfig/
+        export CC="arm-linux-gnueabihf-gcc"
+        export CXX="arm-linux-gnueabihf-g++"
+        ls /opt /opt/a30/* 
     - name: make cfg
       run: |
         make -f Makefile.a30 cfg ; cat config.log
