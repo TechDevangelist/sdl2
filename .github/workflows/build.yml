@@ -38,5 +38,16 @@ jobs:
       run: |
         export PATH=/opt/a30/bin/:$PATH
         make -f Makefile.a30
-        ls -lahR /home/runner/work/sdl2/sdl2/sdl2/build
-
+        
+    - name : Upload libSDL2.so
+      uses: actions/upload-artifact@master
+      with:
+        name: libSDL2.so
+        path: /home/runner/work/sdl2/sdl2/sdl2/build/.libs
+        if-no-files-found: error
+    - name : Upload libSDL2.la
+      uses: actions/upload-artifact@master
+      with:
+        name: libSDL2.la
+        path: /home/runner/work/sdl2/sdl2/sdl2/build
+        if-no-files-found: error
