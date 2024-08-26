@@ -36,5 +36,6 @@ jobs:
 
     - name: make
       run: |
+        export PATH=/opt/a30/bin/:$PATH
         make -f Makefile.a30 
 
