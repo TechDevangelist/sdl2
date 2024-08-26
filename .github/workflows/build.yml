@@ -26,12 +26,21 @@ jobs:
     - name: make cfg
       run: |
         export PATH=/opt/a30/bin/:$PATH
-        export CROSS_COMPILE=/opt/a30/bin/arm-a30-linux-gnueabihf-
-        export PREFIX=/usr
-        export PKG_CONFIG_PATH=/opt/a30/lib/pkgconfig/:/usr/local/lib/pkgconfig/
-        export CC="arm-a30-linux-gnueabihf-gcc"
-        export CXX="arm-a30-linux-gnueabihf-g++"
-        make -f Makefile.a30 cfg ; cat config.log
+        set -o pipefail
+        if ! ( \
+        make -f Makefile.a30 cfg  2>&1 \
+        | tee /tmp/cfg.log \
+        | grep ">>>" \
+        ); then tail -n100 build.log && exit 1
+        fi
+
+    - name: Archive cfg logs
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-logs
+        path: /tmp/cfg.log
+
     - name: make
       run: |
         make -f Makefile.a30 
