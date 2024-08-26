@@ -17,8 +17,8 @@ jobs:
     - name: setup-toolchain
       run: |
         sudo apt-get install build-essential make cmake wget autogen autoconf automake build-essential -y
-        wget -q https://github.com/steward-fu/website/releases/download/miyoo-a30/a30_toolchain.tar.gz
-        tar xzf a30_toolchain.gz -C /opt/ 
+        wget -q https://github.com/steward-fu/website/releases/download/miyoo-a30/a30_toolchain-v1.0.tar.gz
+        tar xzf a30_toolchain-v1.0.tar.gz -C /opt/ 
         chmod +x /opt/a30/bin/*
         ls /opt /opt/a30/* 
         stat /opt/a30/bin/arm-a30-linux-gnueabihf-*
