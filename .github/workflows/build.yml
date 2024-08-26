@@ -29,15 +29,22 @@ jobs:
         make -f Makefile.a30 cfg  2>&1 \
         | tee /tmp/cfg.log \
         | grep ">>>" \
-        ); then tail -n100 build.log && exit 1
+        ); then tail -n100 /tmp/cfg.log && exit 1
         fi
 
     - name: Archive cfg logs
       if: success() || failure()
       uses: actions/upload-artifact@v4
       with:
-        name: build-logs
+        name: cfg-logs
         path: /tmp/cfg.log
+        
+    - name: Archive config.log
+      if: success() || failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: config-logs
+        path: config.log
 
     - name: make
       run: |
