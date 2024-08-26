@@ -25,20 +25,7 @@ jobs:
     - name: make cfg
       run: |
         export PATH=/opt/a30/bin/:$PATH
-        set -o pipefail
-        if ! ( \
-        make -f Makefile.a30 cfg  2>&1 \
-        | tee /tmp/cfg.log \
-        | grep ">>>" \
-        ); then tail -n100 /tmp/cfg.log && exit 1
-        fi
-
-    - name: Archive cfg logs
-      if: success() || failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: cfg-logs
-        path: /tmp/cfg.log
+        make -f Makefile.a30 cfg
         
     - name: Archive config.log
       if: success() || failure()
@@ -50,6 +37,4 @@ jobs:
     - name: make
       run: |
         make -f Makefile.a30 
-    - name: output
-      run: |
-        cat config.log
+
